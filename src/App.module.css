@@ -1,0 +1,23 @@
+.App{
+    display: flex;
+    background-color: #dcdfe5;
+}
+
+.counter {
+    width: 500px;
+    height: 350px;
+    text-align: center;
+    background-color: #415069;
+    margin: 80px auto;
+    border-radius: 15px;
+    border: 2px #5fd8f8 solid;
+}
+
+.btn {
+    width: 450px;
+    height: 80px;
+    border: solid #5fd8f8 2px;
+    border-radius: 15px;
+    display: inline-flex;
+    justify-content:space-between
+}

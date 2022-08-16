@@ -1,0 +1,26 @@
+.IncResSetBtn {
+    border: none;
+    border-radius: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #415069;
+    width: 100px;
+    background-color: #5fd8f8;
+    margin: 20px;
+}
+
+.inactiveBtn{
+    border: none;
+    border-radius: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #415069;
+    width: 100px;
+    background-color: #5d6c90;
+    margin: 20px;
+}
+
+.btn>button:active{
+    background-color: #5d6c90;
+
+}

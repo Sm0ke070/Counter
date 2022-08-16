@@ -1,0 +1,17 @@
+.Value{
+    font-size: 25px;
+    background-color: #415069;
+    border:2px #5fd8f8 solid;
+    border-radius: 15px;
+    width: 450px;
+    height: 200px;
+    margin: 20px auto;
+    font-weight: bold;
+    color: #5fd8f8
+}
+.Value>div>input{
+    text-align: center;
+}
+.Value>div{
+    margin-top: 40px;
+}

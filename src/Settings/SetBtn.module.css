@@ -1,0 +1,17 @@
+.setBtn{
+    border: none;
+    border-radius: 15px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #415069;
+    width: 100px;
+    background-color: #5fd8f8;
+}
+
+.containerSetBtn{
+    margin: 20px auto;
+}
+
+.setBtn:active{
+    background-color: #5d6c90;
+}
