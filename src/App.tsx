@@ -9,11 +9,14 @@ import SetBtn from "./Settings/SetBtn";
 
 
 function App() {
-    const [maxValueInp, setMaxValueInp] = useState('')
-    const [startValueInp,setStartValueInp]=useState('')
+    const [maxValueInp, setMaxValueInp] = useState(0)
+    const [startValueInp, setStartValueInp] = useState(0)
 
-    const maxValueInput = (inputText: string) => {
+    const maxValueInput = (inputText: number) => {
         setMaxValueInp(inputText)
+    }
+    const startValueInput = (inputText: number) => {
+        setStartValueInp(inputText)
     }
 
 
@@ -53,11 +56,14 @@ function App() {
 
             <div className={style.counter}>
 
-                <Value maxValueInput={maxValueInput}/>
+                <Value maxValueInput={maxValueInput}
+                       startValueInput={startValueInput}
+                       startValueInp={startValueInp}
+                       maxValueInp={maxValueInp}/>
 
                 <div className={style.btn}>
 
-                    <SetBtn/>
+                    <SetBtn startValueInp={startValueInp}/>
 
                 </div>
 
