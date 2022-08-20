@@ -50,8 +50,8 @@ function App() {
     }, [])
 
     useEffect(() => {
-        localStorage.setItem('counterValue', JSON.stringify(counter))
-    }, [counter])
+        setCounter(localStorage.getItem('StartValue'))
+    }, [])
 
     const changeCounter = () => {
         if (counter < maxValueInp) {
@@ -102,6 +102,7 @@ function App() {
                                counter={counter}
                                maxValueInp={maxValueInp}
                                changeCounter={changeCounter}/>
+
                     <Reset title={'reset'}
                            counter={counter}
                            resetOutput={resetOutput}

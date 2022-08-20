@@ -11,7 +11,6 @@ const Output = (props: OutputType) => {
     return (
         <div className={style.Output}>
             <p className={props.startValueInp >= props.maxValueInp || props.startValueInp < 0 || props.counter >= props.maxValueInp ? style.maxValue : style.minValue}>
-                {/*className={!props.isValid || props.maxValueInp >= props.counter ?}*/}
                 {props.counter}
             </p>
         </div>
