@@ -1,20 +1,21 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import Output from "./Output/Output";
-import Increment from "./Counter/Increment";
-import Reset from "./Counter/Reset";
+import Increment from "./Button/Increment";
+import Reset from "./Button/Reset";
 import style from "./App.module.css"
 import Value from "./Settings/Value";
 import SetBtn from "./Settings/SetBtn";
+import GlobalButtonContainer from "./Button/GlobalButtonContainer";
 
 
-function App() {
+const App = () => {
 
     const [maxValueInp, setMaxValueInp] = useState(5)
 
     const [startValueInp, setStartValueInp] = useState(0)
 
-    const [counter, setCounter] = useState<any>(startValueInp)
+    const [counter, setCounter] = useState<any>(0)
 
     const isValid = startValueInp < maxValueInp || startValueInp > maxValueInp || startValueInp === maxValueInp
 
@@ -25,6 +26,7 @@ function App() {
         } else setCounter("Incorrect value!")
 
     }
+
     const startValueInput = (inputValue: number) => {
         setStartValueInp(inputValue)
         if (inputValue >= maxValueInp || inputValue < 0) {
@@ -38,24 +40,9 @@ function App() {
         localStorage.setItem('MaxValue', JSON.stringify(maxValueInp))
     }
 
-    useEffect(() => {
-        let StartValue = localStorage.getItem('StartValue')
-        let MaxValue = localStorage.getItem('MaxValue')
-        if (StartValue) {
-            setStartValueInp(+StartValue)
-        }
-        if (MaxValue) {
-            setMaxValueInp(+MaxValue)
-        }
-    }, [])
-
-    useEffect(() => {
-        setCounter(localStorage.getItem('StartValue'))
-    }, [])
-
     const changeCounter = () => {
         if (counter < maxValueInp) {
-            setCounter(counter + 1)
+            setCounter(+counter + 1)
             console.log("IncrementBtnClick")
         }
     }
@@ -63,26 +50,33 @@ function App() {
         setCounter(startValueInp)
     }
 
+    // useEffect(() => {
+    //     let StartValue = localStorage.getItem('StartValue')
+    //     let MaxValue = localStorage.getItem('MaxValue')
+    //     if (StartValue) {
+    //         setStartValueInp(+StartValue)
+    //     }
+    //     if (MaxValue) {
+    //         setMaxValueInp(+MaxValue)
+    //     }
+    // }, [])
+    //
+    // useEffect(() => {
+    //     setCounter(localStorage.getItem('StartValue'))
+    // }, [])
+
+    let render;
     return (
         <div className={style.App}>
-
-            <div className={style.DELETE}>
-                <ul>
-                    <li>maxV={maxValueInp}</li>
-                    <li>startV={startValueInp}</li>
-                    <li>counter={counter}</li>
-                </ul>
-            </div>
+            <GlobalButtonContainer/>
 
             <div className={style.counter}>
-
                 <Value maxValueInput={maxValueInput}
                        startValueInput={startValueInput}
                        startValueInp={startValueInp}
                        maxValueInp={maxValueInp}/>
 
                 <div className={style.btn}>
-
                     <SetBtn startValueInp={startValueInp}
                             maxValueInp={maxValueInp}
                             changeSettings={changeSettings}/>
@@ -96,6 +90,7 @@ function App() {
                         startValueInp={startValueInp}
                         counter={counter}
                         isValid={isValid}
+
                 />
                 <div className={style.btn}>
                     <Increment title={'inc'}
@@ -108,6 +103,7 @@ function App() {
                            resetOutput={resetOutput}
                            isValid={isValid}
                            maxValueInp={maxValueInp}/>
+
                 </div>
             </div>
         </div>

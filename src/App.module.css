@@ -19,9 +19,5 @@
     border: solid #5fd8f8 2px;
     border-radius: 15px;
     display: inline-flex;
-    justify-content:space-between
-}
-
-.DELETE{
-    position: absolute;
+    justify-content:space-around;
 }

@@ -13,6 +13,7 @@ const Output = (props: OutputType) => {
             <p className={props.startValueInp >= props.maxValueInp || props.startValueInp < 0 || props.counter >= props.maxValueInp ? style.maxValue : style.minValue}>
                 {props.counter}
             </p>
+
         </div>
     )
 }

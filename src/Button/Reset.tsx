@@ -5,7 +5,7 @@ type ResetType = {
     counter: number,
     title: string,
     isValid: boolean,
-    maxValueInp:number,
+    maxValueInp: number,
 }
 const Reset = (props: ResetType) => {
 
@@ -19,5 +19,4 @@ const Reset = (props: ResetType) => {
         </div>
     )
 }
-
 export default Reset;
