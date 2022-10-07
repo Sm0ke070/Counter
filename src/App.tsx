@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import Output from "./Output/Output";
 import Increment from "./Button/Increment";
@@ -9,7 +9,9 @@ import SetBtn from "./Settings/SetBtn";
 import GlobalButtonContainer from "./Button/GlobalButtonContainer";
 
 
-const App = () => {
+type AppType = {}
+
+const App: React.FC<AppType> = (props) => {
 
     const [maxValueInp, setMaxValueInp] = useState(5)
 
@@ -65,10 +67,8 @@ const App = () => {
     //     setCounter(localStorage.getItem('StartValue'))
     // }, [])
 
-    let render;
     return (
         <div className={style.App}>
-            <GlobalButtonContainer/>
 
             <div className={style.counter}>
                 <Value maxValueInput={maxValueInput}
@@ -93,12 +93,15 @@ const App = () => {
 
                 />
                 <div className={style.btn}>
-                    <Increment title={'inc'}
+
+                    <GlobalButtonContainer />
+
+                    <Increment title={'old-inc'}
                                counter={counter}
                                maxValueInp={maxValueInp}
                                changeCounter={changeCounter}/>
 
-                    <Reset title={'reset'}
+                    <Reset title={'old-reset'}
                            counter={counter}
                            resetOutput={resetOutput}
                            isValid={isValid}

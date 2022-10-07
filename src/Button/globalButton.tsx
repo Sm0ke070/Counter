@@ -1,14 +1,20 @@
 import React from 'react';
+import style from "./Btn.module.css";
 
+type GlobalButtonType = {
+    title: string,
+    counter: number,
+    callback: () => void,
+}
 
-
-const GlobalButton = ({...props}) => {
+const GlobalButton = (props: GlobalButtonType) => {
     return (
-        <div>
+        <div className={style.btn}>
 
-            <button onClick={props.increment}>+1</button>
-            <button onClick={props.reset}>reset</button>
+            <button className={style.IncResSetBtn} onClick={props.callback}>{props.title}</button>
+
             <p>{props.counter}</p>
+
         </div>
     );
 };
