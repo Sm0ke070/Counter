@@ -1,5 +1,11 @@
 import {combineReducers, createStore} from "redux";
-import CounterReducer, {incrementValueAC, resetValueAC, setMaxValueAC, setStartValueAC} from "./counterReducer";
+import CounterReducer, {
+    incrementValueAC,
+    resetValueAC,
+    setInputValueAC,
+    setMaxValueAC,
+    setStartValueAC
+} from "./counterReducer";
 
 let rootReducer = combineReducers({
         counterState: CounterReducer
@@ -13,8 +19,8 @@ export type ActionsType =
     | ReturnType<typeof resetValueAC>
     | ReturnType<typeof setStartValueAC>
     | ReturnType<typeof setMaxValueAC>
+    | ReturnType<typeof setInputValueAC>
 
 let store = createStore(rootReducer);
-console.log(store.getState())
 
 export default store

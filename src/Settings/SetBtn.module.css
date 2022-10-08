@@ -6,6 +6,7 @@
     color: #415069;
     width: 100px;
     background-color: #5fd8f8;
+    user-select:none
 }
 
 .inactiveBtn{

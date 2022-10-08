@@ -3,37 +3,42 @@ import GlobalButton from "./globalButton";
 import React from "react";
 import {AppStateType} from "../redux/redux-store";
 import {incrementValueAC, resetValueAC} from "../redux/counterReducer";
+import style from "./Btn.module.css"
 
 
 type GlobalButtonContainerType = {
-    counter: number,
     resetValueAC: () => void
     incrementValueAC: () => void
+    startValue: number
+    maxValue: number
+    counter: number
 }
 
-class GlobalButtonContainer extends React.Component<GlobalButtonContainerType> {
-
-
-    render() {
+const GlobalButtonContainer = (props: GlobalButtonContainerType) => {
+        let disabled = props.counter === props.maxValue
+        let styles = props.counter === props.maxValue ? style.inactiveBtn: style.IncResSetBtn
         return <>
-            <GlobalButton callback={this.props.incrementValueAC}
-                          counter={this.props.counter}
-                          title={"Inc"}/>
-
-            <GlobalButton callback={this.props.resetValueAC}
-                          counter={this.props.counter}
-                          title={"reset"}/>
-
+            <GlobalButton incrementValueAC={props.incrementValueAC}
+                          resetValueAC={props.resetValueAC}
+                          maxValue={props.maxValue}
+                          counter={props.counter}
+                          disabled={disabled}
+                          styles={styles}
+            />
         </>
     }
-};
+;
 
 type mapStateToPropsType = {
     counter: number,
+    startValue: number,
+    maxValue: number
 }
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     return {
-        counter: state.counterState.counter
+        counter: state.counterState.counter,
+        startValue: state.counterState.startValue,
+        maxValue: state.counterState.maxValue,
     }
 }
 
@@ -41,18 +46,4 @@ export default connect(mapStateToProps, {
     incrementValueAC,
     resetValueAC
 })(GlobalButtonContainer);
-
-
-
-// const mapDispatchToProps = (dispatch: Dispatch) => {
-//     return {
-//         increment: () => {
-//             dispatch(incrementValueAC())
-//         },
-//         reset:()=>{
-//             dispatch(resetValueAC())
-//         }
-//     }
-// }
-
 

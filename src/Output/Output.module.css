@@ -7,6 +7,7 @@
     height: 200px;
     margin: 20px auto;
     font-weight: bold;
+    user-select:none
 
 }
 .maxValue{
