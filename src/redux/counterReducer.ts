@@ -2,6 +2,8 @@ import {ActionsType} from "./redux-store";
 
 type initialStateType = {
     counter: number,
+    preStartValue: number,
+    preMaxValue: number,
     startValue: number,
     maxValue: number,
     incrementBtn: boolean,
@@ -12,6 +14,8 @@ type initialStateType = {
 }
 export let initialState = {
     counter: 0,
+    preStartValue: 0,
+    preMaxValue: 5,
     startValue: 0,
     maxValue: 5,
     incrementBtn: true,
@@ -27,12 +31,14 @@ const CounterReducer = (state: initialStateType = initialState, action: ActionsT
             return {...state, counter: state.counter + 1}
         case "RESET-VALUE":
             return {...state, counter: state.startValue}
-        case "SET-START-VALUE":
-            return {...state, startValue: action.startValue}
         case "SET-MAX-VALUE":
-            return {...state, maxValue: action.maxValue}
+            return {...state, maxValue: action.inputMaxValue}
+        case "SET-START-VALUE":
+            return {...state, startValue: action.inputStartValue}
+        case "SET":
+            return {...state, counter: state.startValue}
         default:
-            return state
+            return {...state}
     }
 };
 export const incrementValueAC = () => {
@@ -45,17 +51,23 @@ export const resetValueAC = () => {
         type: "RESET-VALUE"
     } as const
 }
-export const setStartValueAC = (startValue: number) => {
-    return {
-        type: "SET-START-VALUE",
-        startValue
-    } as const
-}
-export const setMaxValueAC = (maxValue: number) => {
+export const setMaxValueAC = (inputMaxValue: number) => {
     return {
         type: "SET-MAX-VALUE",
-        maxValue
+        inputMaxValue
     } as const
 }
+export const setStartValueAC = (inputStartValue: number) => {
+    return {
+        type: "SET-START-VALUE",
+        inputStartValue
+    } as const
+}
+export const setInputValueAC = () => {
+    return {
+        type: "SET",
+    } as const
+}
+
 
 export default CounterReducer;

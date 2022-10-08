@@ -7,7 +7,8 @@
     height: 200px;
     margin: 20px auto;
     font-weight: bold;
-    color: #5fd8f8
+    color: #5fd8f8;
+    user-select: none;
 }
 
 .Value > div > input {

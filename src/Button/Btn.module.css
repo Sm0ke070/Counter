@@ -7,9 +7,10 @@
     width: 100px;
     background-color: #5fd8f8;
     margin: 20px;
+    user-select:none
 }
 
-.inactiveBtn{
+.inactiveBtn {
     border: none;
     border-radius: 15px;
     font-size: 30px;
@@ -20,7 +21,6 @@
     margin: 20px;
 }
 
-.btn>button:active{
+button:active {
     background-color: #5d6c90;
-
 }

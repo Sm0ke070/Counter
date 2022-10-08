@@ -1,45 +1,56 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, ChangeEventHandler} from 'react';
 import style from "./Value.module.css"
 
 type ValuePropsType = {
-    maxValueInput: (inputText: number) => void,
-    startValueInput: (inputText: number) => void,
-    maxValueInp: number,
-    startValueInp: number,
+    setMaxValueAC: (maxValue: number) => void,
+    setStartValueAC: (startValue: number) => void,
+    startValue: number,
+    maxValue: number,
+    setInputValueAC: () => void
 }
 
 const Value = (props: ValuePropsType) => {
 
     const inputMaxValueChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         let inputValue = event.currentTarget.value
-        props.maxValueInput(+inputValue)
+        props.setMaxValueAC(+inputValue)
     }
+
     const inputStartValueChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
         let inputValue = event.currentTarget.value
-        props.startValueInput(+inputValue)
+        props.setStartValueAC(+inputValue)
     }
 
     return (
         <div className={style.Value}>
             <div>max value:
                 <input
-                    className={props.maxValueInp > props.startValueInp ? style.input : style.errorInput}
+                    className={props.maxValue > props.startValue ? style.input : style.errorInput}
                     onChange={inputMaxValueChangeHandler}
-                    value={props.maxValueInp}
+                    value={props.maxValue}
                     type='number'/>
 
             </div>
             <div>
                 start value:
                 <input
-                    className={props.startValueInp < 0 || props.startValueInp >= props.maxValueInp ? style.errorInput : style.input}
+                    className={props.startValue < 0 || props.startValue >= props.maxValue ? style.errorInput : style.input}
                     onChange={inputStartValueChangeHandler}
-                    value={props.startValueInp}
+                    value={props.startValue}
                     type='number'/>
             </div>
-
+            <button onClick={props.setInputValueAC}>Q</button>
         </div>
     );
 };
 
 export default Value;
+
+// const inputMaxValueChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+//     let inputValue = event.currentTarget.value
+//     props.maxValueInput(+inputValue)
+// }
+// const inputStartValueChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+//     let inputValue = event.currentTarget.value
+//     props.startValueInput(+inputValue)
+// }

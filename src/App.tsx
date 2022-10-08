@@ -7,6 +7,9 @@ import style from "./App.module.css"
 import Value from "./Settings/Value";
 import SetBtn from "./Settings/SetBtn";
 import GlobalButtonContainer from "./Button/GlobalButtonContainer";
+import OutputContainer from "./Output/OutputContainer";
+import GlobalButton from "./Button/globalButton";
+import ValueContainer from "./Settings/ValueContainer";
 
 
 type AppType = {}
@@ -17,39 +20,39 @@ const App: React.FC<AppType> = (props) => {
 
     const [startValueInp, setStartValueInp] = useState(0)
 
-    const [counter, setCounter] = useState<any>(0)
+    const [OLDcounter, setOLDcounter] = useState<any>(0)
 
     const isValid = startValueInp < maxValueInp || startValueInp > maxValueInp || startValueInp === maxValueInp
 
     const maxValueInput = (inputValue: number) => {
         setMaxValueInp(inputValue)
         if (inputValue > startValueInp) {
-            setCounter("enter values and press 'set'")
-        } else setCounter("Incorrect value!")
+            setOLDcounter("enter values and press 'set'")
+        } else setOLDcounter("Incorrect value!")
 
     }
 
     const startValueInput = (inputValue: number) => {
         setStartValueInp(inputValue)
         if (inputValue >= maxValueInp || inputValue < 0) {
-            setCounter("Incorrect value!")
-        } else setCounter("enter values and press 'set'")
+            setOLDcounter("Incorrect value!")
+        } else setOLDcounter("enter values and press 'set'")
     }
 
     const changeSettings = () => {
-        setCounter(startValueInp)
+        setOLDcounter(startValueInp)
         localStorage.setItem('StartValue', JSON.stringify(startValueInp))
         localStorage.setItem('MaxValue', JSON.stringify(maxValueInp))
     }
 
     const changeCounter = () => {
-        if (counter < maxValueInp) {
-            setCounter(+counter + 1)
+        if (OLDcounter < maxValueInp) {
+            setOLDcounter(+OLDcounter + 1)
             console.log("IncrementBtnClick")
         }
     }
     const resetOutput = () => {
-        setCounter(startValueInp)
+        setOLDcounter(startValueInp)
     }
 
     // useEffect(() => {
@@ -71,10 +74,13 @@ const App: React.FC<AppType> = (props) => {
         <div className={style.App}>
 
             <div className={style.counter}>
-                <Value maxValueInput={maxValueInput}
-                       startValueInput={startValueInput}
-                       startValueInp={startValueInp}
-                       maxValueInp={maxValueInp}/>
+
+                <ValueContainer/>
+
+                {/*<Value maxValueInput={maxValueInput}*/}
+                {/*       startValueInput={startValueInput}*/}
+                {/*       startValueInp={startValueInp}*/}
+                {/*       maxValueInp={maxValueInp}/>*/}
 
                 <div className={style.btn}>
                     <SetBtn startValueInp={startValueInp}
@@ -86,26 +92,27 @@ const App: React.FC<AppType> = (props) => {
             {/*------------------------------------------*/}
 
             <div className={style.counter}>
-                <Output maxValueInp={maxValueInp}
+                <OutputContainer/>
+                {/* <Output maxValueInp={maxValueInp}
                         startValueInp={startValueInp}
-                        counter={counter}
+                        counter={OLDcounter}
                         isValid={isValid}
 
-                />
+                />*/}
                 <div className={style.btn}>
 
-                    <GlobalButtonContainer />
+                    <GlobalButtonContainer/>
 
-                    <Increment title={'old-inc'}
-                               counter={counter}
-                               maxValueInp={maxValueInp}
-                               changeCounter={changeCounter}/>
+                    {/*<Increment title={'old-inc'}*/}
+                    {/*           counter={counter}*/}
+                    {/*           maxValueInp={maxValueInp}*/}
+                    {/*           changeCounter={changeCounter}/>*/}
 
-                    <Reset title={'old-reset'}
-                           counter={counter}
-                           resetOutput={resetOutput}
-                           isValid={isValid}
-                           maxValueInp={maxValueInp}/>
+                    {/*<Reset title={'old-reset'}*/}
+                    {/*       counter={counter}*/}
+                    {/*       resetOutput={resetOutput}*/}
+                    {/*       isValid={isValid}*/}
+                    {/*       maxValueInp={maxValueInp}/>*/}
 
                 </div>
             </div>

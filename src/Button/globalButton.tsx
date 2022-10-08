@@ -2,18 +2,26 @@ import React from 'react';
 import style from "./Btn.module.css";
 
 type GlobalButtonType = {
-    title: string,
-    counter: number,
-    callback: () => void,
+    incrementValueAC: () => void
+    resetValueAC: () => void
+    maxValue: number
+    counter: number
+    disabled: boolean
+    styles: string
 }
 
 const GlobalButton = (props: GlobalButtonType) => {
+
     return (
         <div className={style.btn}>
 
-            <button className={style.IncResSetBtn} onClick={props.callback}>{props.title}</button>
-
-            <p>{props.counter}</p>
+            <button className={props.styles} onClick={props.incrementValueAC}
+                    disabled={props.disabled}>
+                Inc
+            </button>
+            <button className={style.IncResSetBtn} onClick={props.resetValueAC}>
+                reset
+            </button>
 
         </div>
     );
