@@ -26,7 +26,7 @@ const Value = (props: ValuePropsType) => {
             <div>max value:
                 <input
                     className={props.maxValue > props.startValue ? style.input : style.errorInput}
-                    onChange={inputMaxValueChangeHandler}
+                    onChange={inputMaxValueChangeHandler }
                     value={props.maxValue}
                     type='number'/>
 
