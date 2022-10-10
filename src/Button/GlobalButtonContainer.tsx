@@ -16,7 +16,7 @@ type GlobalButtonContainerType = {
 
 const GlobalButtonContainer = (props: GlobalButtonContainerType) => {
         let disabled = props.counter >= props.maxValue
-        let styles = disabled ? style.inactiveBtn : style.IncResSetBtn
+        let styles = disabled ? style.inactiveBtn : style.IncResBtn
         return <>
             <GlobalButton incrementValueAC={props.incrementValueAC}
                           resetValueAC={props.resetValueAC}

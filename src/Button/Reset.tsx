@@ -11,7 +11,7 @@ const Reset = (props: ResetType) => {
 
     return (
         <div className={style.btn}>
-            <button className={props.counter <= props.maxValueInp ? style.IncResSetBtn : style.inactiveBtn}
+            <button className={props.counter <= props.maxValueInp ? style.IncResBtn : style.inactiveBtn}
                     onClick={props.resetOutput}
                     disabled={props.counter === 0}>
                 {props.title}

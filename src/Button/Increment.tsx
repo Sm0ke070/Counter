@@ -9,7 +9,7 @@ type IncrementType = {
 const Increment = (props: IncrementType) => {
     return (
         <div className={style.btn}>
-            <button className={props.counter < props.maxValueInp ? style.IncResSetBtn : style.inactiveBtn}
+            <button className={props.counter < props.maxValueInp ? style.IncResBtn : style.inactiveBtn}
                     onClick={props.changeCounter}>
                 {props.title}
             </button>

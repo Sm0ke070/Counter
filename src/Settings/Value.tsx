@@ -6,7 +6,6 @@ type ValuePropsType = {
     setStartValueAC: (startValue: number) => void,
     startValue: number,
     maxValue: number,
-    setInputValueAC: () => void
 }
 
 const Value = (props: ValuePropsType) => {
@@ -39,7 +38,6 @@ const Value = (props: ValuePropsType) => {
                     value={props.startValue}
                     type='number'/>
             </div>
-            <button onClick={props.setInputValueAC}>Q</button>
         </div>
     );
 };

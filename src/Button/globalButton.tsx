@@ -19,7 +19,7 @@ const GlobalButton = (props: GlobalButtonType) => {
                     disabled={props.disabled}>
                 Inc
             </button>
-            <button className={style.IncResSetBtn} onClick={props.resetValueAC}>
+            <button className={style.IncResBtn} onClick={props.resetValueAC}>
                 reset
             </button>
 

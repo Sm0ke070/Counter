@@ -5,11 +5,12 @@ import Increment from "./Button/Increment";
 import Reset from "./Button/Reset";
 import style from "./App.module.css"
 import Value from "./Settings/Value";
-import SetBtn from "./Settings/SetBtn";
+import SetBtnOLD from "./Settings/SetBtn-OLD";
 import GlobalButtonContainer from "./Button/GlobalButtonContainer";
 import OutputContainer from "./Output/OutputContainer";
 import GlobalButton from "./Button/globalButton";
 import ValueContainer from "./Settings/ValueContainer";
+import SetBtnContainer from "./Settings/SetBtnContainer";
 
 
 type AppType = {}
@@ -83,9 +84,7 @@ const App: React.FC<AppType> = (props) => {
                 {/*       maxValueInp={maxValueInp}/>*/}
 
                 <div className={style.btn}>
-                    <SetBtn startValueInp={startValueInp}
-                            maxValueInp={maxValueInp}
-                            changeSettings={changeSettings}/>
+                    <SetBtnContainer/>
                 </div>
             </div>
 

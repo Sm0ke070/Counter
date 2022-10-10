@@ -1,24 +1,20 @@
 import React from 'react';
-import style from "./SetBtn.module.css"
+import style from "./SetBtn.module.css";
 
-type SetBtnPropsType = {
-    startValueInp: number,
-    maxValueInp: number,
-    changeSettings: () => void,
+type SetBtnType = {
+    setInputValueAC: () => void
+    disabledSet: boolean
 }
 
-const SetBtn = (props: SetBtnPropsType) => {
-
-
+const SetBtn = (props: SetBtnType) => {
     return (
         <div className={style.containerSetBtn}>
-            <button
-                className={props.startValueInp < 0 || props.startValueInp >= props.maxValueInp ? style.inactiveBtn : style.setBtn}
-                disabled={props.startValueInp < 0 || props.startValueInp >= props.maxValueInp}
-                onClick={props.changeSettings}> set
+            <button className={style.setBtn}
+                    onClick={props.setInputValueAC}
+                    disabled={props.disabledSet}>
+                Set
             </button>
         </div>
-
     );
 };
 

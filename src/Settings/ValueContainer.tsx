@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
 import Value from "./Value";
-import {setInputValueAC, setMaxValueAC, setStartValueAC} from "../redux/counterReducer";
+import {setMaxValueAC, setStartValueAC} from "../redux/counterReducer";
 import {AppStateType} from "../redux/redux-store";
 
 type ValueContainerType = {
@@ -9,7 +9,6 @@ type ValueContainerType = {
     startValue: number,
     setMaxValueAC: (maxValue: number) => void,
     setStartValueAC: (startValue: number) => void,
-    setInputValueAC: () => void
 }
 
 const ValueContainer = (props: ValueContainerType) => {
@@ -20,7 +19,6 @@ const ValueContainer = (props: ValueContainerType) => {
                    setMaxValueAC={props.setMaxValueAC}
                    startValue={props.startValue}
                    maxValue={props.maxValue}
-                   setInputValueAC={props.setInputValueAC}
             />
         </>
     );
@@ -40,5 +38,4 @@ const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
 export default connect(mapStateToProps, {
     setStartValueAC,
     setMaxValueAC,
-    setInputValueAC,
 })(ValueContainer);

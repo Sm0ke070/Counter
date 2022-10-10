@@ -1,11 +1,29 @@
 import React from 'react';
+import {AppStateType} from "../redux/redux-store";
+import {connect} from "react-redux";
+import SetBtn from "./SetBtn";
+import {setInputValueAC} from "../redux/counterReducer";
 
-const SetBtnContainer = () => {
+type SetBtnContainerType = {
+    setInputValueAC: () => void
+    disabledSet: boolean
+}
+
+const SetBtnContainer = (props: SetBtnContainerType) => {
     return (
-        <div>
-            
-        </div>
+        <>
+            <SetBtn setInputValueAC={props.setInputValueAC}
+                    disabledSet={props.disabledSet}/>
+        </>
     );
 };
 
-export default SetBtnContainer;
+const mapStateToProps = (state: AppStateType) => {
+    return {
+        disabledSet: state.counterState.disabledSet
+    }
+}
+
+export default connect(mapStateToProps, {
+    setInputValueAC,
+})(SetBtnContainer);
