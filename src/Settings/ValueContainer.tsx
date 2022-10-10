@@ -7,8 +7,8 @@ import {AppStateType} from "../redux/redux-store";
 type ValueContainerType = {
     maxValue: number,
     startValue: number,
-    setMaxValueAC: (maxValue: number) => void,
-    setStartValueAC: (startValue: number) => void,
+    setMaxValueAC: (maxValue: number,isDisabled:boolean) => void,
+    setStartValueAC: (startValue: number, isDisabled: boolean) => void,
 }
 
 const ValueContainer = (props: ValueContainerType) => {

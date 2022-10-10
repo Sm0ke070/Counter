@@ -13,7 +13,7 @@ const SetBtnOLD = (props: SetBtnPropsType) => {
     return (
         <div className={style.containerSetBtn}>
             <button
-                className={props.startValueInp < 0 || props.startValueInp >= props.maxValueInp ? style.inactiveBtn : style.setBtn}
+                className={props.startValueInp < 0 || props.startValueInp >= props.maxValueInp ? style.disabledBtn : style.setBtn}
                 disabled={props.startValueInp < 0 || props.startValueInp >= props.maxValueInp}
                 onClick={props.changeSettings}> set-OLD
             </button>

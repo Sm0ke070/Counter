@@ -8,6 +8,7 @@ type OutputContainerType = {
     counter: number,
     startValue: number
     maxValue: number
+    show: boolean
 }
 
 const OutputContainer = (props: OutputContainerType) => {
@@ -16,19 +17,24 @@ const OutputContainer = (props: OutputContainerType) => {
 
     return <>
         <Output counter={props.counter}
-                styles={styles}/>
+                styles={styles}
+                show={props.show}/>
     </>
 
 }
 
 type mapStateToPropsType = {
-    counter: number,
+    counter: number
+    startValue: number
+    maxValue: number
+    show: boolean
 }
-const mapStateToProps = (state: AppStateType): OutputContainerType => {
+const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     return {
         counter: state.counterState.counter,
         startValue: state.counterState.startValue,
         maxValue: state.counterState.maxValue,
+        show: state.counterState.show,
     }
 }
 

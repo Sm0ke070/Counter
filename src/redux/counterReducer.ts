@@ -1,24 +1,23 @@
 import {ActionsType} from "./redux-store";
 
+
 type initialStateType = {
-    counter: number,
-    startValue: number,
-    maxValue: number,
-    disabledIncrement: boolean,
-    disabledReset: boolean,
-    disabledSet: boolean,
-    notification: string,
-    error: string,
+    counter: number
+    startValue: number
+    maxValue: number
+    show: boolean
+    disabledIncrement: boolean
+    disabledReset: boolean
+    disabledSet: boolean
 }
-export let initialState = {
+export const initialState = {
     counter: 0,
     startValue: 0,
     maxValue: 5,
-    disabledIncrement: true,
-    disabledReset: true,
-    disabledSet: true,
-    notification: "enter values and press 'set'",
-    error: "Incorrect value!",
+    show: true,
+    disabledIncrement: false,
+    disabledReset: false,
+    disabledSet: false,
 }
 
 const CounterReducer = (state: initialStateType = initialState, action: ActionsType): initialStateType => {
@@ -28,13 +27,30 @@ const CounterReducer = (state: initialStateType = initialState, action: ActionsT
         case "RESET-VALUE":
             return {...state, counter: state.startValue}
         case "SET-MAX-VALUE":
-            return {...state, maxValue: action.inputMaxValue}
+            return {
+                ...state,
+                maxValue: action.inputMaxValue,
+                disabledSet: action.isDisabled,
+                disabledReset: true,
+                disabledIncrement: true,
+                show: false
+            }
         case "SET-START-VALUE":
-            return {...state, startValue: action.inputStartValue}
+            return {
+                ...state,
+                startValue: action.inputStartValue,
+                disabledSet: action.isDisabled,
+                disabledReset: true,
+                disabledIncrement: true,
+                show: false
+            }
         case "SET":
-            return {...state, counter: state.startValue}
+            return {
+                ...state, counter: state.startValue, disabledSet: true, disabledReset: false,
+                disabledIncrement: false, show: true
+            }
         default:
-            return state
+            return {...state}
     }
 };
 export const incrementValueAC = () => {
@@ -47,16 +63,18 @@ export const resetValueAC = () => {
         type: "RESET-VALUE"
     } as const
 }
-export const setMaxValueAC = (inputMaxValue: number) => {
+export const setMaxValueAC = (inputMaxValue: number, isDisabled: boolean) => {
     return {
         type: "SET-MAX-VALUE",
-        inputMaxValue
+        inputMaxValue,
+        isDisabled,
     } as const
 }
-export const setStartValueAC = (inputStartValue: number) => {
+export const setStartValueAC = (inputStartValue: number, isDisabled: boolean) => {
     return {
         type: "SET-START-VALUE",
-        inputStartValue
+        inputStartValue,
+        isDisabled,
     } as const
 }
 export const setInputValueAC = () => {

@@ -8,6 +8,8 @@ type GlobalButtonType = {
     counter: number
     disabled: boolean
     styles: string
+    disabledIncrement: boolean
+    disabledReset: boolean
 }
 
 const GlobalButton = (props: GlobalButtonType) => {
@@ -15,11 +17,14 @@ const GlobalButton = (props: GlobalButtonType) => {
     return (
         <div className={style.btn}>
 
-            <button className={props.styles} onClick={props.incrementValueAC}
-                    disabled={props.disabled}>
+            <button className={props.disabledIncrement ? style.disabledBtn : props.styles}
+                    onClick={props.incrementValueAC}
+                    disabled={props.disabled || props.disabledIncrement}>
                 Inc
             </button>
-            <button className={style.IncResBtn} onClick={props.resetValueAC}>
+            <button className={props.disabledReset ? style.disabledBtn : style.IncResBtn}
+                    onClick={props.resetValueAC}
+                    disabled={props.disabledReset}>
                 reset
             </button>
 

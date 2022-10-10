@@ -12,11 +12,13 @@ type GlobalButtonContainerType = {
     startValue: number
     maxValue: number
     counter: number
+    disabledIncrement: boolean
+    disabledReset: boolean
 }
 
 const GlobalButtonContainer = (props: GlobalButtonContainerType) => {
         let disabled = props.counter >= props.maxValue
-        let styles = disabled ? style.inactiveBtn : style.IncResBtn
+        let styles = disabled ? style.disabledBtn : style.IncResBtn
         return <>
             <GlobalButton incrementValueAC={props.incrementValueAC}
                           resetValueAC={props.resetValueAC}
@@ -24,21 +26,28 @@ const GlobalButtonContainer = (props: GlobalButtonContainerType) => {
                           counter={props.counter}
                           disabled={disabled}
                           styles={styles}
+                          disabledIncrement={props.disabledIncrement}
+                          disabledReset={props.disabledReset}
             />
         </>
     }
 ;
 
 type mapStateToPropsType = {
-    counter: number,
-    startValue: number,
+    counter: number
+    startValue: number
     maxValue: number
+    disabledIncrement: boolean
+    disabledReset: boolean
 }
 const mapStateToProps = (state: AppStateType): mapStateToPropsType => {
     return {
         counter: state.counterState.counter,
         startValue: state.counterState.startValue,
         maxValue: state.counterState.maxValue,
+        disabledIncrement: state.counterState.disabledIncrement,
+        disabledReset: state.counterState.disabledReset,
+
     }
 }
 
