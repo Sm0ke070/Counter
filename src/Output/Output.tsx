@@ -4,7 +4,7 @@ type OutputType = {
     counter: number
     styles: string
     show: boolean
-    isValid: boolean
+    Valid: boolean
 }
 
 const Output = (props: OutputType) => {
@@ -15,7 +15,7 @@ const Output = (props: OutputType) => {
             <p className={props.styles}>
                 {props.show
                     ? props.counter
-                    : <p>{props.isValid ? "enter values and press 'set'" : "Incorrect value!"}</p>}
+                    : <p>{props.Valid ? "Incorrect value!" : "enter values and press 'set'"}</p>}
             </p>
         </div>
     )
