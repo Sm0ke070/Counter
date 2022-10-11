@@ -17,7 +17,7 @@ export const initialState = {
     show: true,
     disabledIncrement: false,
     disabledReset: false,
-    disabledSet: false,
+    disabledSet: true,
 }
 
 const CounterReducer = (state: initialStateType = initialState, action: ActionsType): initialStateType => {

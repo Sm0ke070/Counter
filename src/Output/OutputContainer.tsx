@@ -13,12 +13,12 @@ type OutputContainerType = {
 
 const OutputContainer = (props: OutputContainerType) => {
     let styles = props.startValue >= props.maxValue || props.startValue < 0 || props.counter >= props.maxValue ? style.maxValue : style.minValue
-
-
+    let isValid = props.startValue < props.maxValue
     return <>
         <Output counter={props.counter}
                 styles={styles}
-                show={props.show}/>
+                show={props.show}
+                isValid={isValid}/>
     </>
 
 }

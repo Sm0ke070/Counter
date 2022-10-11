@@ -1,9 +1,10 @@
 import style from './Output.module.css'
 
 type OutputType = {
-    counter: number,
+    counter: number
     styles: string
     show: boolean
+    isValid: boolean
 }
 
 const Output = (props: OutputType) => {
@@ -12,7 +13,9 @@ const Output = (props: OutputType) => {
 
         <div className={style.Output}>
             <p className={props.styles}>
-                {props.show ? props.counter : "enter values and press 'set'"}
+                {props.show
+                    ? props.counter
+                    : <p>{props.isValid ? "enter values and press 'set'" : "Incorrect value!"}</p>}
             </p>
         </div>
     )
